@@ -56,10 +56,17 @@ Hints and Notes:
 - Your submission is supposed to be fully reproducible, i.e. the TA and I will 'knit' your submission in RStudio. 
 ```{r}
 p <-ggplot(dogsfinal,aes(x = score ,y = popularity,color = type,label = breed,shape = intelligence,size =size))+
-      geom_point()+scale_y_reverse()+ geom_vline(xintercept = 2.375) + geom_hline(yintercept = 87.5)
-p +guides(label = FALSE)+
-  theme_bw()+
+      geom_point(alpha =.75)+scale_y_reverse()+ geom_vline(xintercept = 2.375) + geom_hline(yintercept = 87.5)
+p<-p +guides(label = FALSE)+
+  ggtitle("Best in Show: The Ultimate Data Dog") +
   theme(axis.text.x = element_blank(),axis.ticks.x = element_blank())+
-  theme(axis.text.y = element_blank(),axis.ticks.y = element_blank()) +geom_text_repel(size=2,segment.size = 0.2)
+  theme(axis.text.y = element_blank(),axis.ticks.y = element_blank()) +geom_text_repel(size=2,segment.size = 0.2)+
+  theme_void()
+p<- p+ annotate("text", label = "Inexplicably Overrated", x = 1.3, y = -5, size = 4)+
+  annotate("text", label = "Hot Dogs!", x = 3.5, y = -5, size = 4) + 
+  annotate("text", label = "The Rightly Ignored", x = 1.3, y = 172, size = 4) + 
+  annotate("text", label = "Overlooked Treasures", x = 3.25, y = 172, size = 4) + 
+  annotate("text", label = "Popularity", x = 2.4, y = -3, size = 4)
+p
 
 ```
